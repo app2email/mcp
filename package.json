@@ -1,0 +1,47 @@
+{
+  "name": "@app2email/mcp",
+  "version": "0.1.0",
+  "description": "MCP server for the app2email WhatsApp API: send WhatsApp templates and replies, read conversations, manage contacts and the Do Not Call list from Claude, ChatGPT, Cursor, OpenClaw and other MCP clients.",
+  "keywords": ["mcp", "model-context-protocol", "app2email", "whatsapp", "whatsapp-business", "ai-agent"],
+  "mcpName": "com.app2email/whatsapp",
+  "type": "module",
+  "bin": {
+    "app2email-mcp": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./tools": {
+      "types": "./dist/tools.d.ts",
+      "default": "./dist/tools.js"
+    }
+  },
+  "files": ["dist", "README.md", "LICENSE", "icon.png", "server.json"],
+  "engines": {
+    "node": ">=18"
+  },
+  "homepage": "https://www.app2email.com/docs/api",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/app2email/mcp"
+  },
+  "bugs": {
+    "url": "https://github.com/app2email/mcp/issues"
+  },
+  "license": "MIT",
+  "author": "Katalina Technologies Pty Ltd (app2email)",
+  "scripts": {
+    "build": "tsc -p tsconfig.json && node -e \"require('fs').chmodSync('dist/index.js', 0o755)\"",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node test/run.mjs",
+    "prepublishOnly": "npm test"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.5.0"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.app2email/whatsapp",
+  "title": "app2email WhatsApp",
+  "description": "Send WhatsApp Business templates and replies, read conversations, manage contacts and opt-outs through app2email.",
+  "websiteUrl": "https://www.app2email.com/docs/api",
+  "repository": {
+    "url": "https://github.com/app2email/mcp",
+    "source": "github"
+  },
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "registryBaseUrl": "https://registry.npmjs.org",
+      "identifier": "@app2email/mcp",
+      "version": "0.1.0",
+      "runtimeHint": "npx",
+      "transport": { "type": "stdio" },
+      "environmentVariables": [
+        {
+          "name": "APP2EMAIL_API_KEY",
+          "description": "API key from https://www.app2email.com/dashboard/apikey (starts with a2en_)",
+          "isRequired": true,
+          "isSecret": true
+        },
+        {
+          "name": "APP2EMAIL_NUMBER",
+          "description": "The WhatsApp number messages are sent from: country code first, digits only, eg 4976659348270",
+          "isRequired": true,
+          "isSecret": false
+        }
+      ]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://api.app2email.com/mcp",
+      "headers": [
+        {
+          "name": "Authorization",
+          "description": "Bearer <your app2email API key>. The key identifies the WhatsApp number. Not needed with OAuth: a client that supports it signs in to app2email instead.",
+          "isRequired": false,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}

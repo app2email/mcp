@@ -1,0 +1,22 @@
+# Publishes @app2email/mcp to npm with provenance when a v* tag is pushed. Needs npm trusted publishing set up for the
+# package (npm > package > Settings > Publishing access > GitHub Actions: this repository, this workflow file name),
+# or an NPM_TOKEN secret with publish rights (then add NODE_AUTH_TOKEN below).
+name: publish-npm
+on:
+  push:
+    tags: ['v*']
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org
+      - run: npm ci
+      - run: npm test
+      - run: npm publish --access public --provenance
