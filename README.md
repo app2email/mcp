@@ -142,3 +142,5 @@ npm test          # builds, then runs test/run.mjs against a fake API over stdio
 - API reference: https://www.app2email.com/docs/api (for agents: https://www.app2email.com/llms.txt, https://www.app2email.com/docs-api.md)
 - OpenAPI: https://api.app2email.com/v1/openapi.json
 - Support: support@app2email.com
+
+[![app2email/mcp MCP server](https://glama.ai/mcp/servers/app2email/mcp/badges/score.svg)](https://glama.ai/mcp/servers/app2email/mcp)
